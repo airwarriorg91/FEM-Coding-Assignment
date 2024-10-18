@@ -1,6 +1,6 @@
-import reader
+import mesh
 
-mesh = reader.Mesh(2)
+m = mesh.Mesh(2)
 
-mesh.read('mesh.msh')
-mesh.plotMesh()
+m.read('mesh.msh')
+m.plotMesh()
