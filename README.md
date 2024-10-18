@@ -12,16 +12,7 @@ This repository contains code to solve the potential flow over a cylinder using 
 
 Below are the mesh images generated:
 
-<div style="display: flex; justify-content: space-around;">
-  <div style="text-align: center;">
-    <img src="gmsh.png" alt="GMSH Mesh" width="300"/>
-    <p>GMSH Generated Mesh</p>
-  </div>
-  <div style="text-align: center;">
-    <img src="mesh.png" alt="Python Mesh" width="300"/>
-    <p>Python Generated Mesh</p>
-  </div>
-</div>
+<img src="gmsh.png" alt="GMSH Mesh" width="300"/> <img src="mesh.png" alt="Python Mesh" width="300"/>
 
 ## How to Run
 
@@ -50,4 +41,10 @@ pip install numpy pandas matplotlib
 
 ## Future Work
 - Implement the FEM solver for potential flow around the cylinder.
-- Validate the results against analytical solutions..
+- Validate the results against analytical solutions.
+
+If the images aren’t appearing side by side and the text isn’t centered as intended, it might be due to the way GitHub handles HTML and CSS in Markdown. Let’s try another approach using a table layout, which is more compatible with Markdown formatting on GitHub.
+
+Here’s the revised section for the `README.md` that uses a table to display the images side by side:
+
+---
