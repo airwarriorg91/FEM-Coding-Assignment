@@ -11,8 +11,8 @@ This repository contains code to solve the potential flow over a cylinder using 
 ## Mesh Visualization
 
 Below are the mesh images generated:
-
-<img src="gmsh.png" alt="GMSH Mesh" width="300"/> <img src="mesh.png" alt="Python Mesh" width="300"/>
+![GMSH Mesh](gmsh.png)
+![Python Mesh](mesh.png)
 
 ## How to Run
 
