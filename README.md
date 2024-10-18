@@ -45,9 +45,3 @@ pip install numpy pandas matplotlib
 ## Future Work
 - Implement the FEM solver for potential flow around the cylinder.
 - Validate the results against analytical solutions.
-
-If the images aren’t appearing side by side and the text isn’t centered as intended, it might be due to the way GitHub handles HTML and CSS in Markdown. Let’s try another approach using a table layout, which is more compatible with Markdown formatting on GitHub.
-
-Here’s the revised section for the `README.md` that uses a table to display the images side by side:
-
----
