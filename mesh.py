@@ -107,7 +107,18 @@ class Mesh:
 
             for j in range(nN):  
                 localNodes.append(int(l[5 + j]))
+            localNodes = self.sortCCW(np.array(localNodes))
             self.elements.loc[i, "Nodes"] = str(localNodes)
+    
+    def sortCCW(self,nL):
+        '''
+        Sorts the nodes in CCW order for easier computation
+        '''
+        n = self.nodes.iloc[nL-1,:]
+        centX = np.mean(n.x)
+        centY = np.mean(n.y)
+        angle = np.atan2(n.y-centY, n.x-centX)
+        return nL[np.argsort(angle)]
 
     def checkPair(self, pair):
     
@@ -185,8 +196,7 @@ def nodeList(st):
     st = st.replace(']','')
     st = st.replace(',','')
     st = st.split()
-    return [int(x) for x in st]
-
+    return np.array([int(x) for x in st])
 
 def polygon_edges(corners):
         # Create consecutive pairs using zip and add the closing pair (last to first corner)

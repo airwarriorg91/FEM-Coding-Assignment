@@ -55,8 +55,8 @@ Mesh 1;
 Mesh 2;
 
 //Physical Curves and Surfaces
-Physical Curve("Inlet", 1) = {7};
-Physical Curve("Outlet", 2) = {5};
+Physical Curve("Inlet", 1) = {5};
+Physical Curve("Outlet", 2) = {7};
 Physical Curve("Top", 3) = {6};
 Physical Curve("Bottom", 4) = {4,8};
 Physical Curve("Cylinder",5) = {1,2,3};
