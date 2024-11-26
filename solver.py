@@ -3,7 +3,6 @@ import numpy.linalg as la
 import mesh
 import pandas as pd
 import matplotlib.pyplot as plt
-from scipy.interpolate import griddata
 
 def compdN(e,n):
     dNde = 0.25*np.array([n-1, 1-n, n+1, -n-1])
@@ -64,11 +63,11 @@ def plotQOI(x,y,qoi,text):
     plt.ylabel('Y')
     plt.xlim([min(x),max(x)])
     plt.ylim([min(y),max(y)])
-    plt.scatter(x, y, c=qoi, cmap='turbo')
+    plt.scatter(x, y, c=qoi, cmap='turbo', s=5)
     plt.colorbar(label=text)
     plt.xlabel('X')
     plt.ylabel('Y')
-    plt.savefig(f'{text}.png', bbox_inches='tight', dpi=300)
+    plt.savefig(f'n100/{text}.png', bbox_inches='tight', dpi=300)
 
 def solver(m):
     
@@ -113,23 +112,25 @@ def solver(m):
 
     #Step 2
     RHS = np.zeros((m.nNodes,1))
-    for i in range(len(inlet.index)):
-        n = mesh.nodeList(inlet.iloc[i,3])
+    for i in range(len(outlet.index)):
+        n = mesh.nodeList(outlet.iloc[i,3])
         l = np.abs(m.nodes.iloc[n[0]-1,1]-m.nodes.iloc[n[1]-1,1])
         RHS[n[0]-1] += l/2
         RHS[n[1]-1] += l/2
 
-    #Step 3 (At outlet, phi=0)
+    #Step 3 (At inlet, phi=Ux)
     PD = set()
-    for i in range(len(outlet.index)):
-        n = mesh.nodeList(outlet.iloc[i,3])
+    for i in range(len(inlet.index)):
+        n = mesh.nodeList(inlet.iloc[i,3])
         PD.update(list(n))
-
+    
     AD = Nodes - PD
+    PD = np.array(list(PD), dtype=int)
     AD = np.array(list(AD), dtype=int)
 
     #Step 4
     psi = np.zeros((m.nNodes,1))
+    #psi[PD-1] = np.mean(m.nodes.iloc[PD-1,0])
     psi[AD-1] = la.solve(K[np.ix_(AD-1, AD-1)], RHS[AD-1])
 
     #Step 5 and 6

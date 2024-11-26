@@ -5,10 +5,10 @@
 R = 0.5; //Radius of Cylinder
 DH = 6;  //Domain Height
 DL = 8;  //Domain Length
-nc = 20; //Number of points of cylinder surface
-nh = 20; //Number of points on the length boundary
-nl = 20; //Number of points on the height boundary
-np = 30; //Number of points on the progression boundaries
+nc = 100; //Number of points of cylinder surface
+nh = 100; //Number of points on the length boundary
+nl = 200; //Number of points on the height boundary
+np = 60; //Number of points on the progression boundaries
 
 //Points
 Point(100) = {0,0,0};
@@ -34,7 +34,8 @@ Line(8) = {8,1};
 Line(9) = {2,7};
 Line(10) = {3,6};
 
-Transfinite Curve {1,2,3} = nc Using Progression 1.0;
+Transfinite Curve {1,3} = nc Using Progression 1.0;
+Transfinite Curve {2} = nl Using Progression 1.0;
 Transfinite Curve {6} = nl Using Progression 1.0;
 Transfinite Curve {5,7} = nh Using Progression 1.0;
 Transfinite Curve {-4,8,-9,-10} = np Using Progression 0.95;
